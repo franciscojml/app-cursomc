@@ -15,7 +15,7 @@ export class HomePage {
     senha: ""
   }
 
-  constructor(public navCtrl: NavController, public menu: MenuController, public authService : AuthService) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public auth : AuthService) {
   }
 
   ionViewWillEnter() {
@@ -27,9 +27,9 @@ export class HomePage {
   }
 
   login(){
-    this.authService.authenticate(this.creds)
+    this.auth.authenticate(this.creds)
     .subscribe(response => {
-      console.log(response.headers.get('Authorization'));
+      this.auth.successfulLogin(response.headers.get('Authorization'));
       this.navCtrl.setRoot('CategoriasPage');  
     },
     error => {})
