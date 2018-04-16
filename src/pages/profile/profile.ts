@@ -1,3 +1,4 @@
+import { StatusBar } from '@ionic-native/status-bar';
 import { ClienteService } from './../../services/domain/cliente.service';
 import { ClienteDTO } from './../../models/cliente.dto';
 import { Component } from '@angular/core';
@@ -25,8 +26,13 @@ export class ProfilePage {
         this.cliente = response;
         this.getImageIfExists();
       },
-      error => {}
-      );
+      error => {
+        if(error.status == 403){
+          this.navCtrl.setRoot('HomePage');
+        }
+      });
+    } else {
+      this.navCtrl.setRoot('HomePage');
     }
   }
 
