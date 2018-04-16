@@ -1,4 +1,3 @@
-import { StatusBar } from '@ionic-native/status-bar';
 import { ClienteService } from './../../services/domain/cliente.service';
 import { ClienteDTO } from './../../models/cliente.dto';
 import { Component } from '@angular/core';
